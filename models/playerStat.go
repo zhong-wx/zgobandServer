@@ -43,3 +43,9 @@ func QueryPlayerStat(account string) (*PlayerStat, error) {
 	}
 	return &p, nil
 }
+
+func QueryAllPlayerStat() []PlayerStat {
+	var players []PlayerStat
+	db.Find(&players)
+	return players
+}

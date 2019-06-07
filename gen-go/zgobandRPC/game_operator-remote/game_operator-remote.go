@@ -160,29 +160,29 @@ func main() {
     value0 := argvalue0
     argvalue1 := flag.Arg(2)
     value1 := argvalue1
-    tmp2, err67 := (strconv.Atoi(flag.Arg(3)))
-    if err67 != nil {
+    tmp2, err69 := (strconv.Atoi(flag.Arg(3)))
+    if err69 != nil {
       Usage()
       return
     }
     argvalue2 := int32(tmp2)
     value2 := argvalue2
-    tmp3, err68 := (strconv.Atoi(flag.Arg(4)))
-    if err68 != nil {
+    tmp3, err70 := (strconv.Atoi(flag.Arg(4)))
+    if err70 != nil {
       Usage()
       return
     }
     argvalue3 := int8(tmp3)
     value3 := argvalue3
-    tmp4, err69 := (strconv.Atoi(flag.Arg(5)))
-    if err69 != nil {
+    tmp4, err71 := (strconv.Atoi(flag.Arg(5)))
+    if err71 != nil {
       Usage()
       return
     }
     argvalue4 := int8(tmp4)
     value4 := argvalue4
-    tmp5, err70 := (strconv.Atoi(flag.Arg(6)))
-    if err70 != nil {
+    tmp5, err72 := (strconv.Atoi(flag.Arg(6)))
+    if err72 != nil {
       Usage()
       return
     }
@@ -200,8 +200,8 @@ func main() {
     value0 := argvalue0
     argvalue1 := flag.Arg(2)
     value1 := argvalue1
-    tmp2, err73 := (strconv.Atoi(flag.Arg(3)))
-    if err73 != nil {
+    tmp2, err75 := (strconv.Atoi(flag.Arg(3)))
+    if err75 != nil {
       Usage()
       return
     }
@@ -219,8 +219,8 @@ func main() {
     value0 := argvalue0
     argvalue1 := flag.Arg(2)
     value1 := argvalue1
-    tmp2, err76 := (strconv.Atoi(flag.Arg(3)))
-    if err76 != nil {
+    tmp2, err78 := (strconv.Atoi(flag.Arg(3)))
+    if err78 != nil {
       Usage()
       return
     }
@@ -240,15 +240,15 @@ func main() {
     value0 := argvalue0
     argvalue1 := flag.Arg(2)
     value1 := argvalue1
-    tmp2, err80 := (strconv.Atoi(flag.Arg(3)))
-    if err80 != nil {
+    tmp2, err82 := (strconv.Atoi(flag.Arg(3)))
+    if err82 != nil {
       Usage()
       return
     }
     argvalue2 := int32(tmp2)
     value2 := argvalue2
-    tmp3, err81 := (strconv.Atoi(flag.Arg(4)))
-    if err81 != nil {
+    tmp3, err83 := (strconv.Atoi(flag.Arg(4)))
+    if err83 != nil {
       Usage()
       return
     }
@@ -266,8 +266,8 @@ func main() {
     value0 := argvalue0
     argvalue1 := flag.Arg(2)
     value1 := argvalue1
-    tmp2, err84 := (strconv.Atoi(flag.Arg(3)))
-    if err84 != nil {
+    tmp2, err86 := (strconv.Atoi(flag.Arg(3)))
+    if err86 != nil {
       Usage()
       return
     }
@@ -285,15 +285,15 @@ func main() {
     value0 := argvalue0
     argvalue1 := flag.Arg(2)
     value1 := argvalue1
-    tmp2, err87 := (strconv.Atoi(flag.Arg(3)))
-    if err87 != nil {
+    tmp2, err89 := (strconv.Atoi(flag.Arg(3)))
+    if err89 != nil {
       Usage()
       return
     }
     argvalue2 := int32(tmp2)
     value2 := argvalue2
-    tmp3, err88 := (strconv.Atoi(flag.Arg(4)))
-    if err88 != nil {
+    tmp3, err90 := (strconv.Atoi(flag.Arg(4)))
+    if err90 != nil {
       Usage()
       return
     }

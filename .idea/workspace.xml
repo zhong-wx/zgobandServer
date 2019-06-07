@@ -2,39 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e195420c-ca28-488b-a6bb-0953672aecbd" name="Default Changelist" comment="完成下棋，逃跑功能&#10;悔棋功能未测试，未做完&#10;下棋过程记录棋局过程">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/zgobandServer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/GoUnusedProtection__.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/game_hall-remote/game_hall-remote.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/game_operator-remote/game_operator-remote.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/login_and_reg-remote/login_and_reg-remote.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/zgobandServerThrift-consts.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/zgobandServerThrift.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handler/gamehallHandler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handler/gameoperatorhandler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handler/loginandreghandler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/connector.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/connector_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/desk.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/desk_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/player.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/playerStat.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/playerStat_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/player_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/msgPush/msgPush.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/msgPush/msgPushServer.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/msgPush/utils/utils.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/msgPush/utils/utils_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vo/chessboards.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vo/gameProcess.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vo/gameProcess_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vo/players.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vo/utils/stack.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vo/utils/stack_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen-go/zgobandRPC/game_hall-remote/game_hall-remote.go" beforeDir="false" afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/game_hall-remote/game_hall-remote.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen-go/zgobandRPC/game_operator-remote/game_operator-remote.go" beforeDir="false" afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/game_operator-remote/game_operator-remote.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen-go/zgobandRPC/zgobandServerThrift.go" beforeDir="false" afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/zgobandServerThrift.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/gamehallHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/gamehallHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/playerStat.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/playerStat.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/msgPush/msgPush.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="91" column="33" lean-forward="true" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
+            <state relative-caret-position="319">
+              <caret line="87" column="33" lean-forward="true" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -83,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/msgPush/msgPushServer.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
+            <state relative-caret-position="561">
               <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
             </state>
           </provider>
@@ -101,17 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/gameoperatorhandler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
+            <state relative-caret-position="429">
               <caret line="207" column="12" lean-forward="true" selection-start-line="207" selection-start-column="12" selection-end-line="207" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vo/utils/stack.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -119,17 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/msgPush/utils/utils.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="40" column="24" lean-forward="true" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+            <state relative-caret-position="396">
+              <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -137,7 +92,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/msgPush/utils/utils_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="264">
               <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
               <folding>
                 <element signature="e#15#43#0" expanded="true" />
@@ -146,14 +101,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handler/gamehallHandler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1045">
-              <caret line="76" column="36" lean-forward="true" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
+            <state relative-caret-position="264">
+              <caret line="85" column="31" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
               <folding>
                 <element signature="n#!!block;n#GetDeskList#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/go/src/math/abs.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/playerStat.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="46" column="23" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -194,6 +167,9 @@
       <find>Logout</find>
       <find>Save</find>
       <find>GameProcess</find>
+      <find>auto</find>
+      <find>AutoMatch</find>
+      <find>me</find>
     </findStrings>
     <dirStrings>
       <dir>D:\my go code\zgobandServer</dir>
@@ -237,7 +213,6 @@
         <option value="$PROJECT_DIR$/msgPush/utils/utils_test.go" />
         <option value="$PROJECT_DIR$/handler/loginandreghandler.go" />
         <option value="$PROJECT_DIR$/models/desk_test.go" />
-        <option value="$PROJECT_DIR$/models/playerStat.go" />
         <option value="$PROJECT_DIR$/models/playerStat_test.go" />
         <option value="$PROJECT_DIR$/vo/players.go" />
         <option value="$PROJECT_DIR$/models/player_test.go" />
@@ -247,13 +222,14 @@
         <option value="$PROJECT_DIR$/vo/utils/stack_test.go" />
         <option value="$PROJECT_DIR$/vo/gameProcess_test.go" />
         <option value="$PROJECT_DIR$/vo/chessboards.go" />
-        <option value="$PROJECT_DIR$/handler/gamehallHandler.go" />
         <option value="$PROJECT_DIR$/vo/utils/stack.go" />
-        <option value="$PROJECT_DIR$/test.go" />
         <option value="$PROJECT_DIR$/vo/gameProcess.go" />
         <option value="$PROJECT_DIR$/msgPush/msgPushServer.go" />
         <option value="$PROJECT_DIR$/handler/gameoperatorhandler.go" />
         <option value="$PROJECT_DIR$/msgPush/msgPush.go" />
+        <option value="$PROJECT_DIR$/test.go" />
+        <option value="$PROJECT_DIR$/models/playerStat.go" />
+        <option value="$PROJECT_DIR$/handler/gamehallHandler.go" />
       </list>
     </option>
   </component>
@@ -481,7 +457,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.31019524" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
@@ -505,8 +481,19 @@
     <MESSAGE value="完成下棋，逃跑功能&#10;悔棋功能未测试，未做完&#10;下棋过程记录棋局过程" />
     <option name="LAST_COMMIT_MESSAGE" value="完成下棋，逃跑功能&#10;悔棋功能未测试，未做完&#10;下棋过程记录棋局过程" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/handler/gamehallHandler.go</url>
+          <line>33</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zgobandRPC/login_and_reg-remote/login_and_reg-remote.go" />
     <entry file="file://$PROJECT_DIR$/zgobandRPC/zgobandServerThrift-consts.go" />
     <entry file="file://$PROJECT_DIR$/../zgobandRPC/ttypes.go" />
     <entry file="file://$PROJECT_DIR$/../zgobandRPC/loginandreg.go" />
@@ -648,13 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/playerStat.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/player_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -787,37 +767,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/msgPush/utils/utils_test.go">
+    <entry file="file://$PROJECT_DIR$/models/player.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <element signature="e#15#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-495">
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/msgPush/msgPushServer.go">
+    <entry file="file://$PROJECT_DIR$/handler/gameoperatorhandler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
+        <state relative-caret-position="429">
+          <caret line="207" column="12" lean-forward="true" selection-start-line="207" selection-start-column="12" selection-end-line="207" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/msgPush/msgPush.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="87" column="33" lean-forward="true" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        <state relative-caret-position="396">
+          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/gamehallHandler.go">
+    <entry file="file://$PROJECT_DIR$/models/playerStat.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1045">
-          <caret line="76" column="36" lean-forward="true" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!block;n#GetDeskList#0" />
-          </folding>
+        <state relative-caret-position="473">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/go/src/math/abs.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/msgPush/msgPushServer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -828,24 +823,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/player.go">
+    <entry file="file://$PROJECT_DIR$/msgPush/utils/utils_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+        <state relative-caret-position="264">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#15#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/gameoperatorhandler.go">
+    <entry file="file://$PROJECT_DIR$/handler/gamehallHandler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="207" column="12" lean-forward="true" selection-start-line="207" selection-start-column="12" selection-end-line="207" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/msgPush/msgPush.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="91" column="33" lean-forward="true" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
+        <state relative-caret-position="264">
+          <caret line="85" column="31" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!block;n#GetDeskList#0" />
+          </folding>
         </state>
       </provider>
     </entry>

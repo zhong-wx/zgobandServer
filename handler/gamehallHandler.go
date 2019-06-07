@@ -6,6 +6,7 @@ import (
 	"../models"
 	"../msgPush"
 	"../vo"
+	"math"
 )
 
 type GameHallHandler struct{}
@@ -29,8 +30,68 @@ func (*GameHallHandler) SitDown(ctx context.Context, account string, deskID int3
 	return succ, err
 }
 
-func (*GameHallHandler) AutoMatch(ctx context.Context, account string) (r int32, err error) {
-	return 0, nil
+func (gh *GameHallHandler) AutoMatch(ctx context.Context, account string) (r map[string]int32, err error) {
+	playersOnTable := models.QueryAllPlayerStat()
+	me := models.QueryPlayer(account)
+	total := me.Winround + me.Loseround + me.Drawround
+	// 找出总回合数和他最接近的五个玩家
+	var totalCloest []*models.Player
+	var difference []float64
+	for _, player := range playersOnTable {
+		playerInfo := models.QueryPlayer(player.Account)
+		t := playerInfo.Winround + playerInfo.Loseround + playerInfo.Drawround
+		if len(totalCloest) < 5 {
+			totalCloest = append(totalCloest, playerInfo)
+			difference = append(difference, math.Abs(float64(total - t)))
+			continue
+		}
+		for i, p := range totalCloest {
+			tmp := p.Drawround + p.Loseround + p.Winround
+			if math.Abs(float64(tmp-total)) < difference[i] {
+				difference[i] = math.Abs(float64(tmp-total))
+				totalCloest[i] = p
+			}
+		}
+	}
+
+	var scoreCloset *models.Player = nil
+	// #TODO
+	scoreDiffence := float64(1000000000)
+	score := me.Score
+	for _, p := range totalCloest {
+		if math.Abs(float64(score-p.Score)) < scoreDiffence {
+			scoreDiffence = math.Abs(float64(score-p.Score))
+			scoreCloset = p
+		}
+	}
+
+	var ret map[string]int32
+	ret = make(map[string]int32)
+	if scoreCloset == nil {
+		ret["isFound"] = 0
+		return ret, nil
+	}
+	for _, p := range playersOnTable {
+		if p.Account == scoreCloset.Account {
+			var seatID int32
+			if p.SeatID == 1 {
+				seatID = 2
+			} else {
+				seatID = 1
+			}
+
+			isSit, err := gh.SitDown(context.TODO(), account, int32(p.DeskID), seatID)
+			if err != nil || !isSit {
+				ret["isFound"] = 0
+				return ret, nil
+			}
+			ret["deskID"] = int32(p.DeskID)
+			ret["seatID"] = int32(seatID)
+			ret["isFound"] = 1
+			return ret, nil
+		}
+	}
+	return
 }
 
 func (*GameHallHandler) GetSavedGame(ctx context.Context, account string, gameName string) (r string, err error) {

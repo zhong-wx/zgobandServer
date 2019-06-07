@@ -1459,7 +1459,7 @@ type GameHall interface {
   LeaveSeat(ctx context.Context, account string, deskID int32, seatID int32) (r int32, err error)
   // Parameters:
   //  - Account
-  AutoMatch(ctx context.Context, account string) (r int32, err error)
+  AutoMatch(ctx context.Context, account string) (r map[string]int32, err error)
   // Parameters:
   //  - Account
   //  - SavedGameName
@@ -1561,7 +1561,7 @@ func (p *GameHallClient) LeaveSeat(ctx context.Context, account string, deskID i
 
 // Parameters:
 //  - Account
-func (p *GameHallClient) AutoMatch(ctx context.Context, account string) (r int32, err error) {
+func (p *GameHallClient) AutoMatch(ctx context.Context, account string) (r map[string]int32, err error) {
   var _args19 GameHallAutoMatchArgs
   _args19.Account = account
   var _result20 GameHallAutoMatchResult
@@ -1862,7 +1862,7 @@ func (p *gameHallProcessorAutoMatch) Process(ctx context.Context, seqId int32, i
 
   iprot.ReadMessageEnd()
   result := GameHallAutoMatchResult{}
-var retval int32
+var retval map[string]int32
   var err2 error
   if retval, err2 = p.handler.AutoMatch(ctx, args.Account); err2 != nil {
     x := thrift.NewTApplicationException(thrift.INTERNAL_ERROR, "Internal error processing autoMatch: " + err2.Error())
@@ -1872,7 +1872,7 @@ var retval int32
     oprot.Flush(ctx)
     return true, err2
   } else {
-    result.Success = &retval
+    result.Success = retval
 }
   if err2 = oprot.WriteMessageBegin("autoMatch", thrift.REPLY, seqId); err2 != nil {
     err = err2
@@ -3137,19 +3137,17 @@ func (p *GameHallAutoMatchArgs) String() string {
 // Attributes:
 //  - Success
 type GameHallAutoMatchResult struct {
-  Success *int32 `thrift:"success,0" db:"success" json:"success,omitempty"`
+  Success map[string]int32 `thrift:"success,0" db:"success" json:"success,omitempty"`
 }
 
 func NewGameHallAutoMatchResult() *GameHallAutoMatchResult {
   return &GameHallAutoMatchResult{}
 }
 
-var GameHallAutoMatchResult_Success_DEFAULT int32
-func (p *GameHallAutoMatchResult) GetSuccess() int32 {
-  if !p.IsSetSuccess() {
-    return GameHallAutoMatchResult_Success_DEFAULT
-  }
-return *p.Success
+var GameHallAutoMatchResult_Success_DEFAULT map[string]int32
+
+func (p *GameHallAutoMatchResult) GetSuccess() map[string]int32 {
+  return p.Success
 }
 func (p *GameHallAutoMatchResult) IsSetSuccess() bool {
   return p.Success != nil
@@ -3169,7 +3167,7 @@ func (p *GameHallAutoMatchResult) Read(iprot thrift.TProtocol) error {
     if fieldTypeId == thrift.STOP { break; }
     switch fieldId {
     case 0:
-      if fieldTypeId == thrift.I32 {
+      if fieldTypeId == thrift.MAP {
         if err := p.ReadField0(iprot); err != nil {
           return err
         }
@@ -3194,11 +3192,30 @@ func (p *GameHallAutoMatchResult) Read(iprot thrift.TProtocol) error {
 }
 
 func (p *GameHallAutoMatchResult)  ReadField0(iprot thrift.TProtocol) error {
-  if v, err := iprot.ReadI32(); err != nil {
-  return thrift.PrependError("error reading field 0: ", err)
+  _, _, size, err := iprot.ReadMapBegin()
+  if err != nil {
+    return thrift.PrependError("error reading map begin: ", err)
+  }
+  tMap := make(map[string]int32, size)
+  p.Success =  tMap
+  for i := 0; i < size; i ++ {
+var _key29 string
+    if v, err := iprot.ReadString(); err != nil {
+    return thrift.PrependError("error reading field 0: ", err)
 } else {
-  p.Success = &v
+    _key29 = v
 }
+var _val30 int32
+    if v, err := iprot.ReadI32(); err != nil {
+    return thrift.PrependError("error reading field 0: ", err)
+} else {
+    _val30 = v
+}
+    p.Success[_key29] = _val30
+  }
+  if err := iprot.ReadMapEnd(); err != nil {
+    return thrift.PrependError("error reading map end: ", err)
+  }
   return nil
 }
 
@@ -3217,10 +3234,20 @@ func (p *GameHallAutoMatchResult) Write(oprot thrift.TProtocol) error {
 
 func (p *GameHallAutoMatchResult) writeField0(oprot thrift.TProtocol) (err error) {
   if p.IsSetSuccess() {
-    if err := oprot.WriteFieldBegin("success", thrift.I32, 0); err != nil {
+    if err := oprot.WriteFieldBegin("success", thrift.MAP, 0); err != nil {
       return thrift.PrependError(fmt.Sprintf("%T write field begin error 0:success: ", p), err) }
-    if err := oprot.WriteI32(int32(*p.Success)); err != nil {
-    return thrift.PrependError(fmt.Sprintf("%T.success (0) field write error: ", p), err) }
+    if err := oprot.WriteMapBegin(thrift.STRING, thrift.I32, len(p.Success)); err != nil {
+      return thrift.PrependError("error writing map begin: ", err)
+    }
+    for k, v := range p.Success {
+      if err := oprot.WriteString(string(k)); err != nil {
+      return thrift.PrependError(fmt.Sprintf("%T. (0) field write error: ", p), err) }
+      if err := oprot.WriteI32(int32(v)); err != nil {
+      return thrift.PrependError(fmt.Sprintf("%T. (0) field write error: ", p), err) }
+    }
+    if err := oprot.WriteMapEnd(); err != nil {
+      return thrift.PrependError("error writing map end: ", err)
+    }
     if err := oprot.WriteFieldEnd(); err != nil {
       return thrift.PrependError(fmt.Sprintf("%T write field end error 0:success: ", p), err) }
   }
@@ -3617,13 +3644,13 @@ func (p *GameHallGetSavedGameListResult)  ReadField0(iprot thrift.TProtocol) err
   tSlice := make([]string, 0, size)
   p.Success =  tSlice
   for i := 0; i < size; i ++ {
-var _elem29 string
+var _elem31 string
     if v, err := iprot.ReadString(); err != nil {
     return thrift.PrependError("error reading field 0: ", err)
 } else {
-    _elem29 = v
+    _elem31 = v
 }
-    p.Success = append(p.Success, _elem29)
+    p.Success = append(p.Success, _elem31)
   }
   if err := iprot.ReadListEnd(); err != nil {
     return thrift.PrependError("error reading list end: ", err)
@@ -3787,11 +3814,11 @@ func (p *GameHallGetDeskListResult)  ReadField0(iprot thrift.TProtocol) error {
   tSlice := make([]*Desk, 0, size)
   p.Success =  tSlice
   for i := 0; i < size; i ++ {
-    _elem30 := &Desk{}
-    if err := _elem30.Read(iprot); err != nil {
-      return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", _elem30), err)
+    _elem32 := &Desk{}
+    if err := _elem32.Read(iprot); err != nil {
+      return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", _elem32), err)
     }
-    p.Success = append(p.Success, _elem30)
+    p.Success = append(p.Success, _elem32)
   }
   if err := iprot.ReadListEnd(); err != nil {
     return thrift.PrependError("error reading list end: ", err)
@@ -3922,23 +3949,23 @@ func (p *GameOperatorClient) Client_() thrift.TClient {
 //  - Row
 //  - Column
 func (p *GameOperatorClient) PutChess(ctx context.Context, player1 string, player2 string, deskID int32, seatID int8, row int8, column int8) (r int8, err error) {
-  var _args47 GameOperatorPutChessArgs
-  _args47.Player1 = player1
-  _args47.Player2 = player2
-  _args47.DeskID = deskID
-  _args47.SeatID = seatID
-  _args47.Row = row
-  _args47.Column = column
-  var _result48 GameOperatorPutChessResult
-  if err = p.Client_().Call(ctx, "putChess", &_args47, &_result48); err != nil {
+  var _args49 GameOperatorPutChessArgs
+  _args49.Player1 = player1
+  _args49.Player2 = player2
+  _args49.DeskID = deskID
+  _args49.SeatID = seatID
+  _args49.Row = row
+  _args49.Column = column
+  var _result50 GameOperatorPutChessResult
+  if err = p.Client_().Call(ctx, "putChess", &_args49, &_result50); err != nil {
     return
   }
   switch {
-  case _result48.E!= nil:
-    return r, _result48.E
+  case _result50.E!= nil:
+    return r, _result50.E
   }
 
-  return _result48.GetSuccess(), nil
+  return _result50.GetSuccess(), nil
 }
 
 // Parameters:
@@ -3946,30 +3973,12 @@ func (p *GameOperatorClient) PutChess(ctx context.Context, player1 string, playe
 //  - OtherSide
 //  - SeatID
 func (p *GameOperatorClient) TakeBackReq(ctx context.Context, account string, otherSide string, seatID int8) (r bool, err error) {
-  var _args49 GameOperatorTakeBackReqArgs
-  _args49.Account = account
-  _args49.OtherSide = otherSide
-  _args49.SeatID = seatID
-  var _result50 GameOperatorTakeBackReqResult
-  if err = p.Client_().Call(ctx, "takeBackReq", &_args49, &_result50); err != nil {
-    return
-  }
-  return _result50.GetSuccess(), nil
-}
-
-// Parameters:
-//  - Player1
-//  - Player2
-//  - SeatID
-//  - Resp
-func (p *GameOperatorClient) TakeBackRespond(ctx context.Context, player1 string, player2 string, seatID int8, resp bool) (r bool, err error) {
-  var _args51 GameOperatorTakeBackRespondArgs
-  _args51.Player1 = player1
-  _args51.Player2 = player2
+  var _args51 GameOperatorTakeBackReqArgs
+  _args51.Account = account
+  _args51.OtherSide = otherSide
   _args51.SeatID = seatID
-  _args51.Resp = resp
-  var _result52 GameOperatorTakeBackRespondResult
-  if err = p.Client_().Call(ctx, "takeBackRespond", &_args51, &_result52); err != nil {
+  var _result52 GameOperatorTakeBackReqResult
+  if err = p.Client_().Call(ctx, "takeBackReq", &_args51, &_result52); err != nil {
     return
   }
   return _result52.GetSuccess(), nil
@@ -3978,16 +3987,34 @@ func (p *GameOperatorClient) TakeBackRespond(ctx context.Context, player1 string
 // Parameters:
 //  - Player1
 //  - Player2
+//  - SeatID
+//  - Resp
+func (p *GameOperatorClient) TakeBackRespond(ctx context.Context, player1 string, player2 string, seatID int8, resp bool) (r bool, err error) {
+  var _args53 GameOperatorTakeBackRespondArgs
+  _args53.Player1 = player1
+  _args53.Player2 = player2
+  _args53.SeatID = seatID
+  _args53.Resp = resp
+  var _result54 GameOperatorTakeBackRespondResult
+  if err = p.Client_().Call(ctx, "takeBackRespond", &_args53, &_result54); err != nil {
+    return
+  }
+  return _result54.GetSuccess(), nil
+}
+
+// Parameters:
+//  - Player1
+//  - Player2
 //  - DeskID
 //  - SeatID
 func (p *GameOperatorClient) LoseReq(ctx context.Context, player1 string, player2 string, deskID int32, seatID int8) (err error) {
-  var _args53 GameOperatorLoseReqArgs
-  _args53.Player1 = player1
-  _args53.Player2 = player2
-  _args53.DeskID = deskID
-  _args53.SeatID = seatID
-  var _result54 GameOperatorLoseReqResult
-  if err = p.Client_().Call(ctx, "loseReq", &_args53, &_result54); err != nil {
+  var _args55 GameOperatorLoseReqArgs
+  _args55.Player1 = player1
+  _args55.Player2 = player2
+  _args55.DeskID = deskID
+  _args55.SeatID = seatID
+  var _result56 GameOperatorLoseReqResult
+  if err = p.Client_().Call(ctx, "loseReq", &_args55, &_result56); err != nil {
     return
   }
   return nil
@@ -3998,12 +4025,12 @@ func (p *GameOperatorClient) LoseReq(ctx context.Context, player1 string, player
 //  - OtherSide
 //  - SeatID
 func (p *GameOperatorClient) DrawReq(ctx context.Context, account string, otherSide string, seatID int8) (err error) {
-  var _args55 GameOperatorDrawReqArgs
-  _args55.Account = account
-  _args55.OtherSide = otherSide
-  _args55.SeatID = seatID
-  var _result56 GameOperatorDrawReqResult
-  if err = p.Client_().Call(ctx, "drawReq", &_args55, &_result56); err != nil {
+  var _args57 GameOperatorDrawReqArgs
+  _args57.Account = account
+  _args57.OtherSide = otherSide
+  _args57.SeatID = seatID
+  var _result58 GameOperatorDrawReqResult
+  if err = p.Client_().Call(ctx, "drawReq", &_args57, &_result58); err != nil {
     return
   }
   return nil
@@ -4016,14 +4043,14 @@ func (p *GameOperatorClient) DrawReq(ctx context.Context, account string, otherS
 //  - SeatID
 //  - Resp
 func (p *GameOperatorClient) DrawResponse(ctx context.Context, player1 string, player2 string, deskID int32, seatID int8, resp bool) (err error) {
-  var _args57 GameOperatorDrawResponseArgs
-  _args57.Player1 = player1
-  _args57.Player2 = player2
-  _args57.DeskID = deskID
-  _args57.SeatID = seatID
-  _args57.Resp = resp
-  var _result58 GameOperatorDrawResponseResult
-  if err = p.Client_().Call(ctx, "drawResponse", &_args57, &_result58); err != nil {
+  var _args59 GameOperatorDrawResponseArgs
+  _args59.Player1 = player1
+  _args59.Player2 = player2
+  _args59.DeskID = deskID
+  _args59.SeatID = seatID
+  _args59.Resp = resp
+  var _result60 GameOperatorDrawResponseResult
+  if err = p.Client_().Call(ctx, "drawResponse", &_args59, &_result60); err != nil {
     return
   }
   return nil
@@ -4034,12 +4061,12 @@ func (p *GameOperatorClient) DrawResponse(ctx context.Context, player1 string, p
 //  - Account
 //  - Text
 func (p *GameOperatorClient) SendChatText(ctx context.Context, toAccount string, account string, text string) (err error) {
-  var _args59 GameOperatorSendChatTextArgs
-  _args59.ToAccount = toAccount
-  _args59.Account = account
-  _args59.Text = text
-  var _result60 GameOperatorSendChatTextResult
-  if err = p.Client_().Call(ctx, "sendChatText", &_args59, &_result60); err != nil {
+  var _args61 GameOperatorSendChatTextArgs
+  _args61.ToAccount = toAccount
+  _args61.Account = account
+  _args61.Text = text
+  var _result62 GameOperatorSendChatTextResult
+  if err = p.Client_().Call(ctx, "sendChatText", &_args61, &_result62); err != nil {
     return
   }
   return nil
@@ -4048,10 +4075,10 @@ func (p *GameOperatorClient) SendChatText(ctx context.Context, toAccount string,
 // Parameters:
 //  - Account
 func (p *GameOperatorClient) SaveGame(ctx context.Context, account string) (err error) {
-  var _args61 GameOperatorSaveGameArgs
-  _args61.Account = account
-  var _result62 GameOperatorSaveGameResult
-  if err = p.Client_().Call(ctx, "saveGame", &_args61, &_result62); err != nil {
+  var _args63 GameOperatorSaveGameArgs
+  _args63.Account = account
+  var _result64 GameOperatorSaveGameResult
+  if err = p.Client_().Call(ctx, "saveGame", &_args63, &_result64); err != nil {
     return
   }
   return nil
@@ -4077,16 +4104,16 @@ func (p *GameOperatorProcessor) ProcessorMap() map[string]thrift.TProcessorFunct
 
 func NewGameOperatorProcessor(handler GameOperator) *GameOperatorProcessor {
 
-  self63 := &GameOperatorProcessor{handler:handler, processorMap:make(map[string]thrift.TProcessorFunction)}
-  self63.processorMap["putChess"] = &gameOperatorProcessorPutChess{handler:handler}
-  self63.processorMap["takeBackReq"] = &gameOperatorProcessorTakeBackReq{handler:handler}
-  self63.processorMap["takeBackRespond"] = &gameOperatorProcessorTakeBackRespond{handler:handler}
-  self63.processorMap["loseReq"] = &gameOperatorProcessorLoseReq{handler:handler}
-  self63.processorMap["drawReq"] = &gameOperatorProcessorDrawReq{handler:handler}
-  self63.processorMap["drawResponse"] = &gameOperatorProcessorDrawResponse{handler:handler}
-  self63.processorMap["sendChatText"] = &gameOperatorProcessorSendChatText{handler:handler}
-  self63.processorMap["saveGame"] = &gameOperatorProcessorSaveGame{handler:handler}
-return self63
+  self65 := &GameOperatorProcessor{handler:handler, processorMap:make(map[string]thrift.TProcessorFunction)}
+  self65.processorMap["putChess"] = &gameOperatorProcessorPutChess{handler:handler}
+  self65.processorMap["takeBackReq"] = &gameOperatorProcessorTakeBackReq{handler:handler}
+  self65.processorMap["takeBackRespond"] = &gameOperatorProcessorTakeBackRespond{handler:handler}
+  self65.processorMap["loseReq"] = &gameOperatorProcessorLoseReq{handler:handler}
+  self65.processorMap["drawReq"] = &gameOperatorProcessorDrawReq{handler:handler}
+  self65.processorMap["drawResponse"] = &gameOperatorProcessorDrawResponse{handler:handler}
+  self65.processorMap["sendChatText"] = &gameOperatorProcessorSendChatText{handler:handler}
+  self65.processorMap["saveGame"] = &gameOperatorProcessorSaveGame{handler:handler}
+return self65
 }
 
 func (p *GameOperatorProcessor) Process(ctx context.Context, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
@@ -4097,12 +4124,12 @@ func (p *GameOperatorProcessor) Process(ctx context.Context, iprot, oprot thrift
   }
   iprot.Skip(thrift.STRUCT)
   iprot.ReadMessageEnd()
-  x64 := thrift.NewTApplicationException(thrift.UNKNOWN_METHOD, "Unknown function " + name)
+  x66 := thrift.NewTApplicationException(thrift.UNKNOWN_METHOD, "Unknown function " + name)
   oprot.WriteMessageBegin(name, thrift.EXCEPTION, seqId)
-  x64.Write(oprot)
+  x66.Write(oprot)
   oprot.WriteMessageEnd()
   oprot.Flush(ctx)
-  return false, x64
+  return false, x66
 
 }
 
