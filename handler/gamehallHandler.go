@@ -6,7 +6,10 @@ import (
 	"../models"
 	"../msgPush"
 	"../vo"
+	"encoding/json"
+	"fmt"
 	"math"
+	"strconv"
 )
 
 type GameHallHandler struct{}
@@ -94,12 +97,41 @@ func (gh *GameHallHandler) AutoMatch(ctx context.Context, account string) (r map
 	return
 }
 
-func (*GameHallHandler) GetSavedGame(ctx context.Context, account string, gameName string) (r string, err error) {
-	return "fds", nil
+func (*GameHallHandler) GetSavedGame(ctx context.Context, id int32) (r string, err error) {
+	savedGame := models.GetSaveGame(int(id))
+	if savedGame == nil {
+		return "", fmt.Errorf("cannot find saved game")
+	}
+	savedGameMap := make(map[string]interface{})
+	json.Unmarshal([]byte(savedGame.Record), &savedGameMap)
+	savedGameMap["seatID"] = savedGame.SeatID
+	bs, err := json.Marshal(savedGameMap)
+	if err != nil {
+		fmt.Println("GetSGetSavedGame:json.Marshal fail, error:", err.Error())
+		return "", err
+	}
+	return string(bs), nil
 }
 
 func (*GameHallHandler) GetSavedGameList(ctx context.Context, account string) (r []string, err error) {
-	return []string{"1"}, nil
+	savedGameList := models.GetAllSavedGame(account)
+	for _, savedGame := range savedGameList {
+		savedGameMap := make(map[string]interface{})
+		savedGameMap["id"] = savedGame.Id
+		saveTime := savedGame.SaveTime
+		saveTimeStr := strconv.Itoa(int(saveTime.Month())) + "月" + strconv.Itoa(saveTime.Day()) + "日" + " " + strconv.Itoa(saveTime.Hour()) + ":" + strconv.Itoa(saveTime.Minute())
+		savedGameMap["saveTime"] = saveTimeStr
+		savedGameMap["name"] = savedGame.GameName
+
+		bs, err := json.Marshal(savedGameMap)
+		if err != nil {
+			panic(-1)
+		}
+
+		r = append(r, string(bs))
+	}
+
+	return r, nil
 }
 
 func (*GameHallHandler) GetDeskList(ctx context.Context) (r []*zgobandRPC.Desk, err error) {

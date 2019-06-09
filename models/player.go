@@ -11,6 +11,7 @@ type Player struct {
 	Loseround int	`gorm:"column:loseRound"`
 	Drawround int	`gorm:"column:drawRound"`
 	Escaperound int	`gorm:"column:escapeRound"`
+	Block []uint8	`gorm:"column:block"`
 }
 
 func (p *Player) Display() {
@@ -93,4 +94,20 @@ func DrawUpdate(account string)  error {
 		return err
 	}
 	return err
+}
+
+func UpdatePlayerInfo(player *Player) {
+	db.Table("players").Where("account", player.Account).Update(map[string]interface{}{"nickname":player.Nickname, "score":player.Score, "winRound":player.Winround, "loseRound":player.Loseround, "escapeRound":player.Escaperound, "drawRound":player.Drawround})
+}
+
+func BlockAccount(account string) {
+	db.Table("players").Where("account = ?", account).Update("block", []uint8{1})
+}
+
+func IsBlock(account string) bool {
+	player := QueryPlayer(account)
+	if player == nil {
+		return false
+	}
+	return player.Block[0] == 1
 }

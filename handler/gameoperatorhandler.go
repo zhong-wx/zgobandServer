@@ -6,6 +6,7 @@ import (
 	"context"
 	"../models"
 	"fmt"
+	"../gen-go/zgobandRPC"
 )
 
 
@@ -199,11 +200,63 @@ func (*GameOperatorHandler) DrawResponse(ctx context.Context, player1 string, pl
 	return nil
 }
 
-func (*GameOperatorHandler) SaveGame(ctx context.Context, account string) (err error) {
-	return nil
+func (*GameOperatorHandler) SaveLastGame(ctx context.Context, account string, seatID int8, gameName string) (r int8, err error) {
+	gp := vo.GetGameProcessByAccount(account)
+	if gp == nil {
+		return -1, nil
+	}
+	bs, err:= gp.ToJson()
+	if err != nil {
+		return -1, err
+	}
+	var otherSide string
+	if seatID==1 {
+		otherSide = gp.GetAccount2()
+	} else {
+		otherSide = gp.GetAccount1()
+	}
+	err, ret := models.SaveGame(gameName, string(bs), account, otherSide, int(seatID))
+	if err != nil {
+		return -1, err
+	}
+
+	return int8(ret), err
 }
 
 func (*GameOperatorHandler) SendChatText(ctx context.Context, toAccount string, account string, text string) (err error) {
 	msgPush.PushChatTextMessage(toAccount, text)
+	return nil
+}
+
+func (*GameOperatorHandler) GetPlayerInfo(ctx context.Context, account string) (r *zgobandRPC.PlayerInfo, err error) {
+	player := models.QueryPlayer(account)
+	if player == nil {
+		return nil, fmt.Errorf("cannot found this account")
+	}
+	r = &zgobandRPC.PlayerInfo{}
+	r.Account = player.Account
+	r.Nickname = player.Nickname
+	r.DrawRound = int32(player.Drawround)
+	r.WinRound = int32(player.Winround)
+	r.LoseRound = int32(player.Loseround)
+	r.EscapeRound = int32(player.Escaperound)
+	r.Core = int32(player.Score)
+	return r, nil
+}
+
+func (*GameOperatorHandler) SavePlayerInfo(ctx context.Context, playerInfo *zgobandRPC.PlayerInfo) (r bool, err error) {
+	player := &models.Player{}
+	player.Account = playerInfo.Account
+	player.Score = int(playerInfo.Core)
+	player.Winround = int(playerInfo.WinRound)
+	player.Loseround = int(playerInfo.LoseRound)
+	player.Escaperound = int(playerInfo.EscapeRound)
+	player.Nickname = playerInfo.Nickname
+	models.UpdatePlayerInfo(player)
+	return true, nil
+}
+
+func (*GameOperatorHandler) BlockAccount(ctx context.Context, account string) (err error) {
+	models.BlockAccount(account)
 	return nil
 }

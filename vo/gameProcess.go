@@ -23,6 +23,13 @@ type Pos struct {
 	Column int8
 }
 
+func (gp *GameProcess) GetAccount1() string {
+	return gp.account1
+}
+func (gp *GameProcess) GetAccount2() string {
+	return gp.account2
+}
+
 func (gp *GameProcess) AddStep(row, column int8) {
 	gp.process.Push(Pos{row, column})
 }
@@ -76,6 +83,15 @@ func GetGameProcess(account1, account2 string) *GameProcess {
 		return nil
 	}
 	return gp
+}
+
+func GetGameProcessByAccount(account string) *GameProcess {
+	for k, gp := range processMap {
+		if strings.Contains(k, account) {
+			return gp
+		}
+	}
+	return nil
 }
 
 func AddGameProcess(account1, account2 string, gp *GameProcess) {

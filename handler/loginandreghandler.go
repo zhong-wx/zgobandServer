@@ -5,6 +5,7 @@ import (
 	"context"
 	"../gen-go/zgobandRPC"
 	"../vo"
+	"fmt"
 )
 
 type LoginAndRegHandler struct{}
@@ -19,6 +20,9 @@ func (*LoginAndRegHandler) Login(ctx context.Context, account string, password s
 	// #TODO 区分已经登陆和密码错误
 	// #TODO 是否要记录登陆状态，是保存在内存中还是数据库中
 
+	if(models.IsBlock(account)) {
+		return nil, fmt.Errorf("is blocked")
+	}
 	if(vo.Logined(account)) {
 		return nil, nil
 	}
