@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e195420c-ca28-488b-a6bb-0953672aecbd" name="Default Changelist" comment="完成下棋，逃跑功能&#10;悔棋功能未测试，未做完&#10;下棋过程记录棋局过程">
-      <change afterPath="$PROJECT_DIR$/models/savedGame.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/savedGame_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gen-go/zgobandRPC/game_hall-remote/game_hall-remote.go" beforeDir="false" afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/game_hall-remote/game_hall-remote.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gen-go/zgobandRPC/game_operator-remote/game_operator-remote.go" beforeDir="false" afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/game_operator-remote/game_operator-remote.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gen-go/zgobandRPC/zgobandServerThrift.go" beforeDir="false" afterPath="$PROJECT_DIR$/gen-go/zgobandRPC/zgobandServerThrift.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/gamehallHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/gamehallHandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/gameoperatorhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/gameoperatorhandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/loginandreghandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/loginandreghandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/player.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/player.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vo/gameProcess.go" beforeDir="false" afterPath="$PROJECT_DIR$/vo/gameProcess.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/savedGame.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/savedGame.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,11 +34,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/player.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="108" column="22" lean-forward="true" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="22" />
+            <state relative-caret-position="592">
+              <caret line="112" column="1" lean-forward="true" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/savedGame.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../src/github.com/jinzhu/gorm/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="462" column="13" selection-start-line="462" selection-start-column="13" selection-end-line="462" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -54,15 +66,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="167">
               <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/player_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -82,33 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="42" column="48" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="31" column="39" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="39" />
-              <folding>
-                <element signature="e#14#46#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/gamehallHandler.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-              <folding>
-                <element signature="e#17#106#0" expanded="true" />
-                <element signature="n#!!block;n#GetDeskList#0" />
-              </folding>
+            <state relative-caret-position="167">
+              <caret line="35" column="63" selection-start-line="35" selection-start-column="63" selection-end-line="35" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -130,6 +108,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
               <caret line="152" selection-start-line="152" selection-end-line="152" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/gamehallHandler.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="239" column="24" selection-start-line="239" selection-start-column="24" selection-end-line="239" selection-end-column="24" />
+              <folding>
+                <element signature="n#!!block;n#GetDeskList#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -240,13 +230,13 @@
         <option value="$PROJECT_DIR$/msgPush/msgPush.go" />
         <option value="$PROJECT_DIR$/models/playerStat.go" />
         <option value="$PROJECT_DIR$/vo/gameProcess.go" />
-        <option value="$PROJECT_DIR$/models/savedGame.go" />
-        <option value="$PROJECT_DIR$/handler/gamehallHandler.go" />
         <option value="$PROJECT_DIR$/models/savedGame_test.go" />
         <option value="$PROJECT_DIR$/test.go" />
         <option value="$PROJECT_DIR$/handler/gameoperatorhandler.go" />
         <option value="$PROJECT_DIR$/handler/loginandreghandler.go" />
         <option value="$PROJECT_DIR$/models/player.go" />
+        <option value="$PROJECT_DIR$/handler/gamehallHandler.go" />
+        <option value="$PROJECT_DIR$/models/savedGame.go" />
       </list>
     </option>
   </component>
@@ -469,12 +459,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5196232" visible="true" weight="0.21321961" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5196232" visible="true" weight="0.21321961" />
       <window_info id="Favorites" order="1" sideWeight="0.50078493" side_tool="true" weight="0.20895523" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.31019524" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3991323" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
@@ -604,13 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../src/github.com/jinzhu/gorm/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -775,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/savedGame.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vo/gameProcess.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -815,17 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/gamehallHandler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#17#106#0" expanded="true" />
-            <element signature="n#!!block;n#GetDeskList#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -843,13 +808,6 @@
           <folding>
             <element signature="e#17#81#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="42" column="48" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -886,8 +844,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/player.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="108" column="22" lean-forward="true" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="22" />
+        <state relative-caret-position="592">
+          <caret line="112" column="1" lean-forward="true" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../src/github.com/jinzhu/gorm/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="462" column="13" selection-start-line="462" selection-start-column="13" selection-end-line="462" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="35" column="63" selection-start-line="35" selection-start-column="63" selection-end-line="35" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/gamehallHandler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="239" column="24" selection-start-line="239" selection-start-column="24" selection-end-line="239" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#GetDeskList#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/savedGame.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
         </state>
       </provider>
     </entry>

@@ -39,3 +39,8 @@ func GetAllSavedGame(account string) []SavedGame {
 	db.Where("account = ?", account).Find(&savedGameList)
 	return savedGameList
 }
+
+func DelSavedGame(id int) {
+	savedGame := SavedGame{Id:id}
+	db.Delete(&savedGame)
+}

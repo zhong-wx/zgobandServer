@@ -236,3 +236,8 @@ func (*GameHallHandler) GetSeatInfo(ctx context.Context, deskID int32, seatID in
 
 	return r, nil
 }
+
+func (*GameHallHandler) DelSavedGame(ctx context.Context, id int32) (err error) {
+	models.DelSavedGame(int(id))
+	return nil
+}
